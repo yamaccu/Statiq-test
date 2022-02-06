@@ -1,0 +1,11 @@
+ArchiveSources: posts/*
+ArchiveKey: => GetDateTime("PostDate").ToString("yyyy/MM")
+ArchiveOrderDescending: false
+---
+
+@foreach (IDocument document in Document.GetChildren())
+{
+    <h5>@Html.DocumentLink(document)</h5>
+    <p><b>Post Date:</b> @document.GetString("PostDate")</p>
+    @Html.Raw(document.GetString(Keys.Excerpt))
+}

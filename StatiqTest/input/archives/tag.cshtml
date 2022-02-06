@@ -1,0 +1,22 @@
+ArchiveSources: posts/*
+ArchiveKey: Colors
+---
+
+@if (Document.ContainsKey(Keys.GroupKey))
+{
+    <h1>タグ：@Document.GetString(Keys.GroupKey)</h1>
+    @foreach (IDocument document in Document.GetChildren())
+    {
+        <h5>@Html.DocumentLink(document)</h5>
+        @Html.Raw(document.GetString(Keys.Excerpt))
+    }
+}
+else
+{
+    // The main color index
+    <h3>All Colors</h3>
+    @foreach (IDocument document in Document.GetChildren())
+    {
+        <h5>@Html.DocumentLink(document)</h5>
+    }
+}
