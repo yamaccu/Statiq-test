@@ -1,0 +1,23 @@
+﻿ArchiveSources: posts/*
+ArchiveKey: Colors
+---
+
+@if (Document.ContainsKey(Keys.GroupKey))
+{
+    <!-- Render a group page -->
+    <p>タグ：@Document.GetString("GroupKey") に属する記事一覧</p>
+    @foreach (IDocument document in Document.GetChildren())
+    {
+        <p>@Html.DocumentLink(document)</p>
+        @Html.Raw(document.GetString(Keys.Excerpt))
+    }
+}
+else
+{
+    <!-- Render an index page -->
+    <p>タグ一覧</p>
+    @foreach (IDocument document in Document.GetChildren())
+    {
+        <p>@Html.DocumentLink(document) (@document.GetChildren().Count().ToString())</p>
+    }
+}

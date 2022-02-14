@@ -1,6 +1,7 @@
 ArchiveSources: posts/*
 ArchiveKey: => GetDateTime("PostDate").ToString("yyyy/MM")
-ArchiveOrderDescending: false
+ArchiveOrder: => GetDateTime("PostDate")
+ArchiveOrderDescending: true
 ---
 
 @foreach (IDocument document in Document.GetChildren())

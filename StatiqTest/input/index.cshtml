@@ -1,41 +1,8 @@
-﻿ArchiveSources: posts/*
-ArchivePageSize: 10
+﻿Title: StatiqTestIndex
 ---
 
-<h1>記事</h1>
+<h2><a href="@Context.GetLink("archives/ArchiveTest.html")">Archive Test</a></h2>
 
-<p>Page @Document.GetString(Keys.Index)</p>
+<h2><a href="@Context.GetLink("archives/AccessMetaData.html")">Access MetaData Test</a></h2>
 
-@foreach (IDocument document in Document.GetChildren())
-{
-    <h5>@Html.DocumentLink(document)</h5>
-    @Html.Raw(document.GetString(Keys.Excerpt))
-}
-
-@{
-    IDocument previous = Document.GetDocument(Keys.Previous);
-    IDocument next = Document.GetDocument(Keys.Next);
-}
-@if (previous != null)
-{
-    <a href="@previous.GetLink()"> Previous Page</a>
-}
-@if (next != null)
-{
-    <a href="@next.GetLink()">Next Page </a>
-}
-
-
-<!--
-<h1>Archiveページ</h1>
-
-<div>
-@foreach (IDocument document in OutputPages["archives/*"])
-{
-    <p>@Html.DocumentLink(document)</p>
-}
-</div>
-
-<br>
-
--->
+<h2><a href="@Context.GetLink("archives/BlogPageTest.html")">Blog Page Test</a></h2>

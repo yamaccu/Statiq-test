@@ -5,48 +5,22 @@
 </head>
 
 <body>
-<h1><a style="text-decoration:none;" href="@Context.GetLink("/")">@Document.GetString("siteTitle")</a></h1>
+<h1>
+<a style="text-decoration:none;" href="@Context.GetLink("/")">@Document.GetString("siteTitle")</a>
+</h1>
 
-<div style="display:flex;">
-
-  <div style="flex:3;margin:10px;">
-
-  <h2>@Document.GetString(WebKeys.Title)</h2>
-
-  @if (Document.ContainsKey("Tags"))
+<!-- posts配下の記事用、MetaData「Fruit」を含む場合はそれを表示 -->
+@if (Document.ContainsKey("Fruit"))
+{
+  <h2>@Document.GetString("Fruit")</h2>
+  <span>tag: </span>
+  foreach(var tag in Document.GetList<string>("Colors"))
   {
-    @Document.GetString("Tags")
+    <span>@tag  </span>
   }
+}
 
-    @RenderBody()
-  </div>
-
-  <div style="flex:1;">
-    <h1>固定ページ</h1>
-    <div>
-      @foreach (IDocument document in OutputPages.GetChildrenOf("index.html"))
-      {
-        <p>@Html.DocumentLink(document)</p>
-      }
-    </div>
-    
-    <br>
-
-    <h1>タグ</h1>
-    @foreach (IDocument document in Outputs.Get("archives/tag.html").GetChildren())
-    {
-      <p>@Html.DocumentLink(document) (@document.GetChildren().Count().ToString())</p>
-    } 
-
-    <br>
-
-    <h1>日付</h1>
-    @foreach (IDocument document in Outputs.Get("archives/PostDate.html").GetChildren())
-    {
-      <p>@Html.DocumentLink(document) (@document.GetChildren().Count().ToString())</p>
-    } 
-  </div>
-
+@RenderBody()
 </body>
 </html>
 

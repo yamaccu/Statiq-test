@@ -1,0 +1,74 @@
+﻿ArchiveSources: posts/*
+ArchiveKey: Colors
+---
+
+<div style="display:flex;">
+
+<div style="margin-right:30px;">
+<p>■ @@Document.GetString("ArchiveSources")</p>
+<p>■ @@Document.GetString("SiteTitle")</p>
+<p>■ @@Document.GetString("layout")</p>
+<p>■ @@Document.ContainsKey(WebKeys.Title)</p>
+<p>■ @@Document.ContainsKey(Keys.LinksUseHttps)</p>
+<p>■ @@Document.GetLink()</p>
+<p>■ @@Document.Destination</p>
+<p>■ @@foreach(var document in Document.GetChildren())<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@@document.GetTitle()<br>
+&nbsp;&nbsp;&nbsp;}<br>
+<br><br>
+</p>
+<p>■ @@Document.GetChildren().Count()</p>
+<p>■ @@Outputs.Get("index.html").GetString("Title")</p>
+<p>■ @@Outputs.Get("index.html").Destination</p>
+<p>■ @@foreach(var document in OutputPages.GetChildrenof("index.html"))<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@@document.GetTitle()<br>
+&nbsp;&nbsp;&nbsp;}<br>
+</p>
+<p>
+■ @@foreach (var document in OutputPages["posts/*"])<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@@document.GetTitle()<br>
+&nbsp;&nbsp;&nbsp;}<br><br><br><br><br><br><br><br><br>
+</p>
+<p>■ @@Context.GetLink(Document)</p>
+
+</div>
+
+
+<div>
+<p>@Document.GetString("ArchiveSources")</p>
+<p>@Document.GetString("SiteTitle")</p>
+<p>@Document.GetString("layout")</p>
+<p>@Document.ContainsKey(WebKeys.Title)</p>
+<p>@Document.ContainsKey(Keys.LinksUseHttps)</p>
+<p>@Document.GetLink()</p>
+<p>@Document.Destination</p>
+<p>
+@foreach(var document in Document.GetChildren())
+{
+    @document.GetTitle()<br>
+}
+</p>
+<p>@Document.GetChildren().Count()</p>
+<p>@Outputs.Get("index.html").GetString("Title")</p>
+<p>@Outputs.Get("index.html").Destination</p>
+<p>
+@foreach(var document in OutputPages.GetChildrenOf("index.html"))
+{
+    @document.GetTitle()<br>
+}<br><br>
+</p>
+<p>
+@foreach (var document in OutputPages["posts/*"])
+{
+    @document.GetTitle()<br>
+}
+</p>
+<p>@Context.GetLink(Document)</p>
+
+</div>
+
+
+</div>

@@ -2,7 +2,7 @@
 using Statiq.App;
 using Statiq.Web;
 
-namespace MySite
+namespace StatiqTest
 {
   public class Program
   {

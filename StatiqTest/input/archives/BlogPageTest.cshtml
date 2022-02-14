@@ -1,0 +1,29 @@
+﻿ArchiveSources: posts/*
+ArchivePageSize: 10
+ArchiveOrder: => GetDateTime("PostDate")
+ArchiveOrderDescending: true
+layout: /_layout_blogtest.cshtml
+---
+
+<h1>記事</h1>
+
+<p>Page @Document.GetString(Keys.Index)</p>
+
+@foreach (IDocument document in Document.GetChildren())
+{
+    <h5>@Html.DocumentLink(document)</h5>
+    @Html.Raw(document.GetString(Keys.Excerpt))
+}
+
+@{
+    IDocument previous = Document.GetDocument(Keys.Previous);
+    IDocument next = Document.GetDocument(Keys.Next);
+}
+@if (previous != null)
+{
+    <a href="@previous.GetLink()"> Previous Page</a>
+}
+@if (next != null)
+{
+    <a href="@next.GetLink()">Next Page </a>
+}

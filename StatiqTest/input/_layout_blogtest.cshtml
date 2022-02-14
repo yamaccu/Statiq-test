@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+<h1><a style="text-decoration:none;" href="@Context.GetLink("/")">@Document.GetString("siteTitle")</a></h1>
+
+<div style="display:flex;">
+
+  <div style="flex:3;margin:10px;">
+
+  <h2>@Document.GetString(WebKeys.Title)</h2>
+
+  @if (Document.ContainsKey("Tags"))
+  {
+    @Document.GetString("Tags")
+  }
+
+    @RenderBody()
+  </div>
+
+  <div style="flex:1;">
+    <h1>固定ページ</h1>
+    <div>
+      @foreach (IDocument document in OutputPages.GetChildrenOf("index.html"))
+      {
+        <p>@Html.DocumentLink(document)</p>
+      }
+    </div>
+    
+    <br>
+
+    <h1>タグ</h1>
+    @foreach (IDocument document in Outputs.Get("archives/ArchiveTest.html").GetChildren())
+    {
+      <p>@Html.DocumentLink(document) (@document.GetChildren().Count().ToString())</p>
+    } 
+
+    <br>
+
+    <h1>日付</h1>
+    @foreach (IDocument document in Outputs.Get("archives/PostDate.html").GetChildren())
+    {
+      <p>@Html.DocumentLink(document) (@document.GetChildren().Count().ToString())</p>
+    } 
+  </div>
+
+</body>
+</html>
+
