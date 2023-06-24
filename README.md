@@ -9,4 +9,4 @@
 <br>
 
 以下のサイトで解説しています。  
-[C#の静的サイトジェネレータ "Statiq" でブログを書く](https://yamaccu.github.io/posts/20220216_StatiqBlog)
+[C#の静的サイトジェネレータ "Statiq" でブログを書く](https://yamaccu.github.io/tech/20220216_StatiqBlog)
